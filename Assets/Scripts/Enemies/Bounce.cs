@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bounce : MonoBehaviour
 {
     public Rigidbody rb;
+    public float ballSpeed = 5.0f;
 
     // Use this for initialization
     void Start ()
@@ -17,8 +18,8 @@ public class Bounce : MonoBehaviour
 	void Update ()
     {
         float speed = rb.velocity.magnitude;
-        if (speed < 5)
-            rb.velocity = rb.velocity * (5 / speed);
+        if (speed < ballSpeed)
+            rb.velocity = rb.velocity * (ballSpeed / speed);
 	}
 
    /* void OnCollisionEnter(Collision collisionInfo)
