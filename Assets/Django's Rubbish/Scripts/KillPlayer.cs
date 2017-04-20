@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class KillPlayer : MonoBehaviour {
 
-    public GameObject GameOverCanvas;
+    private Canvas gameOverCanvas;
 
 
     void start()
     {
-        GameOverCanvas = GameObject.FindGameObjectWithTag("GameOverCanvas");
+        gameOverCanvas = FindObjectOfType<Canvas>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -19,7 +19,7 @@ public class KillPlayer : MonoBehaviour {
 
         {
             Debug.Log("" + gameObject.name + " KILLED PLAYER");
-            GameOverCanvas.SetActive(true);
+            gameOverCanvas.enabled = true;
         }
     }
 }
