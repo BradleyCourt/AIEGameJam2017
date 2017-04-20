@@ -16,7 +16,7 @@ public class Playercontroller : MonoBehaviour
     public Vector3 growLarger;
     public int timesGrown;
     public int maxGrows;
-    public int decreaseSpeed;
+    public float decreaseSpeed;
 
     //Character Controller
     private CharacterController cc;
