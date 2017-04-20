@@ -21,6 +21,11 @@ public class Playercontroller : MonoBehaviour
     //Powerup Related Code
     //public GameObject shield;
 
+    //Dashing Related
+    float dashingTimer = 0;
+    float recharge = 0;
+    public bool isDashing = false;
+
     //Character Controller
     private CharacterController cc;
 
@@ -40,19 +45,39 @@ public class Playercontroller : MonoBehaviour
         var currentV = cc.velocity;
         currentV.z = 0;
 
+        bool wasDashing = isDashing;
+        isDashing = false;
         //Check for if the player is running
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && dashingTimer <0.5f)
         {
+            dashingTimer += Time.deltaTime;
+            isDashing = true;
             move = (Input.GetAxisRaw("Horizontal") * transform.right + Input.GetAxisRaw("Vertical") * transform.forward) * dash;
             currentV.x = move.x;
             currentV.y = move.y;
+            if (!wasDashing)
+            {
+                recharge = 0;
+            }
+
         }
         else
         {
+            if (wasDashing)
+            {
+                dashingTimer = 0.5f;
+            }
+
             move = (Input.GetAxisRaw("Horizontal") * transform.right + Input.GetAxisRaw("Vertical") * transform.forward) * walkSpeed;
             currentV.x = move.x;
             currentV.y = move.y;
         }
+        recharge += Time.deltaTime;
+        if (recharge > 5)
+        {
+            dashingTimer = 0;
+        }
+        wasDashing = isDashing;
         cc.Move(currentV * Time.deltaTime);
     }
     public void Grow()
