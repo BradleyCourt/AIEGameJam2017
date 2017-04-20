@@ -77,7 +77,7 @@ public class ItemAndWallSpawner : MonoBehaviour {
             if (hazardSpawner == 1)
             {
                 Instantiate(hazardHorizontal);
-                hazardHorizontal.transform.localPosition = new Vector3(-5f, Random.Range(4.5f, -4.5f), 0);
+                hazardHorizontal.transform.localPosition = new Vector3(-6.5f, Random.Range(4.5f, -4.5f), 0);
                 spawnTimer++;
 
             }
@@ -86,7 +86,7 @@ public class ItemAndWallSpawner : MonoBehaviour {
             if (hazardSpawner == 2)
             {
                 Instantiate(hazardHorizontal);
-                hazardHorizontal.transform.localPosition = new Vector3(5f, Random.Range(4.5f, -4.5f), 0);
+                hazardHorizontal.transform.localPosition = new Vector3(6.5f, Random.Range(4.5f, -4.5f), 0);
                 spawnTimer++;
 
             }
