@@ -11,6 +11,11 @@ public class ItemAndWallSpawner : MonoBehaviour {
     public GameObject food;
     public GameObject hazardHorizontal;
     public GameObject hazardVertical;
+    public GameObject shieldIcon;
+    public GameObject shieldBubble;
+
+    public int shieldIconSpawner;
+    public int shieldIconTimer;
 
     public int hazardSpawner;
     int spawnTimer;
@@ -29,14 +34,55 @@ public class ItemAndWallSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+
+        //Score Settings.
         scoreText.text = score.ToString();
+
+        //Add 1 to Shield Icon Timer.
+        shieldIconTimer++;
+        
+        //Set Shield Icon Spawn Rate once over a certain amount of score..
+        if (shieldIconTimer > 100)
+        {
+            shieldIconSpawner = GetRandomNumber(3);
+
+        }
+
+        if (shieldIconTimer == 0)
+        {
+            shieldIconSpawner = 0;
+        }
+
+        //Spawn Shield Icon & Reset Shield Timer.
+        if (shieldIconSpawner == 1 )
+        {
+            Instantiate(shieldIcon);
+            shieldIcon.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(3.5f, -3.5f), 0);
+            shieldIconTimer = 0;
+
+        }
+        //Reset Shield Timer.
+        if (shieldIconSpawner == 2)
+        {
+            shieldIconTimer = 0;
+            
+        }
+
+        //Reset Shield Timer.
+        if (shieldIconSpawner == 3)
+        {
+            shieldIconTimer = 0;
+            
+        }
+
 
         //Spawn "Hazard" every "2" score (TURNED OFF)
         /*if (score %2 == 0)
         {
             hazardSpawner = GetRandomNumber(4);
         }*/
+
+
 
         //Switch off "Hazard" spawner.
         if (hazardSpawner > 0 && spawnTimer > 0.1)
@@ -85,6 +131,7 @@ public class ItemAndWallSpawner : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        //Player collides with Food Item.
         if (other.tag == "Food")    
         {
             //Add 1 to score and relocate "Food" item randomly & Spawn a new "Hazard".
