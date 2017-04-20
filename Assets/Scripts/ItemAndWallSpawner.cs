@@ -15,7 +15,7 @@ public class ItemAndWallSpawner : MonoBehaviour {
     public GameObject shieldBubble;
 
     public int shieldIconSpawner;
-    public int shieldIconTimer;
+    public float shieldIconTimer;
 
     public int hazardSpawner;
     int spawnTimer;
@@ -31,49 +31,31 @@ public class ItemAndWallSpawner : MonoBehaviour {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<Playercontroller>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         //Score Settings.
         scoreText.text = score.ToString();
 
         //Add 1 to Shield Icon Timer.
-        shieldIconTimer++;
-        
-        //Set Shield Icon Spawn Rate once over a certain amount of score..
-        if (shieldIconTimer > 100)
-        {
-            shieldIconSpawner = GetRandomNumber(3);
+        /*shieldIconTimer += Time.deltaTime;
 
-        }
-
-        if (shieldIconTimer == 0)
+        //Switch Off Shield Icon.
+        if (shieldIconSpawner > 0 && shieldIconTimer > 3)
         {
             shieldIconSpawner = 0;
+            shieldIconTimer = 0;
+
         }
 
         //Spawn Shield Icon & Reset Shield Timer.
-        if (shieldIconSpawner == 1 )
+        if (shieldIconSpawner == 1 && shieldIconTimer > 0.1)
         {
-            Instantiate(shieldIcon);
+            //Instantiate(shieldIcon);
             shieldIcon.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(3.5f, -3.5f), 0);
-            shieldIconTimer = 0;
-
-        }
-        //Reset Shield Timer.
-        if (shieldIconSpawner == 2)
-        {
-            shieldIconTimer = 0;
-            
-        }
-
-        //Reset Shield Timer.
-        if (shieldIconSpawner == 3)
-        {
-            shieldIconTimer = 0;
-            
-        }
+            shieldIconTimer = 0;*/
 
 
         //Spawn "Hazard" every "2" score (TURNED OFF)
@@ -83,51 +65,52 @@ public class ItemAndWallSpawner : MonoBehaviour {
         }*/
 
 
+    
+            //Switch off "Hazard" spawner.
+            if (hazardSpawner > 0 && spawnTimer > 0.1)
+            {
+                hazardSpawner = 0;
+                spawnTimer = 0;
+            }
 
-        //Switch off "Hazard" spawner.
-        if (hazardSpawner > 0 && spawnTimer > 0.1)
-        {
-            hazardSpawner = 0;
-            spawnTimer = 0;
+            //Spawn Hazard on Left Wall.
+            if (hazardSpawner == 1)
+            {
+                Instantiate(hazardHorizontal);
+                hazardHorizontal.transform.localPosition = new Vector3(-5f, Random.Range(4.5f, -4.5f), 0);
+                spawnTimer++;
+
+            }
+
+            //Spawn Hazard on Right Wall.
+            if (hazardSpawner == 2)
+            {
+                Instantiate(hazardHorizontal);
+                hazardHorizontal.transform.localPosition = new Vector3(5f, Random.Range(4.5f, -4.5f), 0);
+                spawnTimer++;
+
+            }
+
+            //Spawn Hazard on Top Wall.
+            if (hazardSpawner == 3)
+            {
+                Instantiate(hazardVertical);
+                hazardVertical.transform.localPosition = new Vector3(Random.Range(-4.8f, 4.8f), 4.5f, 0);
+                spawnTimer++;
+
+            }
+
+            //Spawn Hazard on Bottom Wall.
+            if (hazardSpawner == 4)
+            {
+                Instantiate(hazardVertical);
+                hazardVertical.transform.localPosition = new Vector3(Random.Range(-4.8f, 4.8f), -4.5f, 0);
+                spawnTimer++;
+
+            }
+
         }
-
-        //Spawn Hazard on Left Wall.
-        if (hazardSpawner == 1)
-        {
-            Instantiate(hazardHorizontal);
-            hazardHorizontal.transform.localPosition = new Vector3(-5f, Random.Range(4.5f, -4.5f), 0);
-            spawnTimer++;
-            
-        }
-
-        //Spawn Hazard on Right Wall.
-        if (hazardSpawner == 2)
-        {
-            Instantiate(hazardHorizontal);
-            hazardHorizontal.transform.localPosition = new Vector3(5f, Random.Range(4.5f, -4.5f), 0);
-            spawnTimer++;
-
-        }
-
-        //Spawn Hazard on Top Wall.
-        if (hazardSpawner == 3)
-        {
-            Instantiate(hazardVertical);
-            hazardVertical.transform.localPosition = new Vector3(Random.Range(-4.8f, 4.8f), 4.5f, 0);
-            spawnTimer++;
-
-        }
-
-        //Spawn Hazard on Bottom Wall.
-        if (hazardSpawner == 4)
-        {
-            Instantiate(hazardVertical);
-            hazardVertical.transform.localPosition = new Vector3(Random.Range(-4.8f, 4.8f), -4.5f, 0);
-            spawnTimer++;
-
-        }
-
-    }
+    
 
     void OnTriggerEnter(Collider other)
     {
@@ -139,7 +122,9 @@ public class ItemAndWallSpawner : MonoBehaviour {
             score = score + 1;
             playerController.Grow();
             hazardSpawner = GetRandomNumber(4);
+            //shieldIconSpawner = GetRandomNumber(4);
         }
+
     }
 
     //Set Score.
