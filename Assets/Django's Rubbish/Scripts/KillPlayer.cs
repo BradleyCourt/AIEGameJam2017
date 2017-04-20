@@ -2,24 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillPlayer : MonoBehaviour {
+public class KillPlayer : MonoBehaviour
+{
 
-    private Canvas gameOverCanvas;
 
+    public GameObject deathObject;
+    public GameObject deathCanvas;
 
-    void start()
+    //public int scoreValue;
+
+    public int objectStrength;
+
+    private GameControllerScript gameController;
+
+    void Start()
     {
-        gameOverCanvas = FindObjectOfType<Canvas>();
+
+        GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
+
+        if (gameControllerObject != null)
+        {
+            gameController = gameControllerObject.GetComponent<GameControllerScript>();
+        }
+        if (gameController == null)
+        {
+            Debug.Log("Cannot find 'GameController' script");
+        }
+
+
+
+
     }
 
+
     void OnTriggerEnter(Collider other)
-
     {
-        if (other.name == "Player")
 
+        if (other.tag == "Player")
         {
-            Debug.Log("" + gameObject.name + " KILLED PLAYER");
-            gameOverCanvas.enabled = true;
+
+            Debug.Log("Enemy has collided with Player");
+
+
+
+            gameController.GameOver();
+            Debug.Log("Death canvas triggered");
         }
+
+
+
     }
 }
