@@ -5,14 +5,27 @@ using UnityEngine;
 public class Playercontroller : MonoBehaviour
 {
     public GameObject player;
+
+
+    //Player Movement
+    private Vector3 move;
     public float walkSpeed = 2.5f; // base walkspeed
     public float dash = 25.0f; // base dash speed
-    private Vector3 move;
+  
+    //Grow Related Code 
     public Vector3 growLarger;
     public int timesGrown;
-    //private ItemAndWallSpawner Food = GetComponent<ItemAndWallSpawner>();
+    public int maxGrows;
+    public float decreaseSpeed;
 
+    //Powerup Related Code
+
+    //Character Controller
     private CharacterController cc;
+
+    //Game States
+    private bool gameOver;
+
     // Use this for initialization
     void Start ()
     {
@@ -44,12 +57,28 @@ public class Playercontroller : MonoBehaviour
     public void Grow()
     {
         // if you collect food, increase scaling of player
-        if(timesGrown <=10)
+        if(timesGrown < maxGrows)
         {
             player.transform.localScale += growLarger;
+            walkSpeed -= decreaseSpeed;
             timesGrown++;
         }
         // after 10 food has been collected, dont grow in size 
         
     }
+    public void Death()
+    {
+
+    }
+
+    public void Shield()
+    {
+
+    }
+
+    public void SugarRush()
+    {
+
+    }
+
 }
