@@ -19,6 +19,7 @@ public class Playercontroller : MonoBehaviour
     public float decreaseSpeed;
 
     //Powerup Related Code
+    //public GameObject shield;
 
     //Character Controller
     private CharacterController cc;
