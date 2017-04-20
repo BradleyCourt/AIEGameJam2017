@@ -18,6 +18,8 @@ public class Playercontroller : MonoBehaviour
     public int maxGrows;
     public float decreaseSpeed;
 
+    //Powerup Related Code
+
     //Character Controller
     private CharacterController cc;
 
@@ -68,4 +70,15 @@ public class Playercontroller : MonoBehaviour
     {
 
     }
+
+    public void Shield()
+    {
+
+    }
+
+    public void SugarRush()
+    {
+
+    }
+
 }
