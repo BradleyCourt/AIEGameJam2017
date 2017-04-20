@@ -6,7 +6,7 @@ public class KillPlayer : MonoBehaviour
 {
 
 
-    public GameObject deathObject;
+    public GameObject deathParticles;
     public GameObject deathCanvas;
 
     //public int scoreValue;
@@ -45,8 +45,10 @@ public class KillPlayer : MonoBehaviour
 
 
 
-            gameController.GameOver();
+          gameController.GameOver();
             Debug.Log("Death canvas triggered");
+
+           
         }
 
 
