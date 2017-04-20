@@ -7,8 +7,8 @@ public class GameControllerScript : MonoBehaviour {
     public GameObject deathCanvas;
     public GameObject deathParticles;
 
-    public GUIText scoreText;
-    public GUIText restartText;
+   // public GUIText scoreText;
+    //public GUIText restartText;
    // public GUIText gameOverText;
 
     private bool gameOver;
@@ -20,10 +20,10 @@ public class GameControllerScript : MonoBehaviour {
     {
         gameOver = false;
         restart = false;
-        restartText.text = "";
+        //restartText.text = "";
         //gameOverText.text = "";
         score = 0;
-        UpdateScore();
+        //UpdateScore();
     }
 
     // Update is called once per frame
@@ -32,16 +32,16 @@ public class GameControllerScript : MonoBehaviour {
 
     }
 
-    public void AddScore(int newScoreValue)
-    {
-        score += newScoreValue;
-        UpdateScore();
-    }
+    //public void AddScore(int newScoreValue)
+    //{
+    //    UpdateScore();
+    //    score += newScoreValue;
+    //}
 
-    void UpdateScore()
-    {
-        scoreText.text = "Score: " + score;
-    }
+    //void UpdateScore()
+    //{
+    //    scoreText.text = "Score: " + score;
+    //}
 
     public void GameOver()
     {
