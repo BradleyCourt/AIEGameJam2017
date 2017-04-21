@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
 
 public class Playercontroller : MonoBehaviour
 {
     public GameObject player;
-
+    InputDevice device;
 
     //Player Movement
     private Vector3 move;
@@ -42,13 +43,15 @@ public class Playercontroller : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        device = InputManager.ActiveDevice;
+            
         var currentV = cc.velocity;
         currentV.z = 0;
 
         bool wasDashing = isDashing;
         isDashing = false;
         //Check for if the player is running
-        if (Input.GetKey(KeyCode.Space) && dashingTimer <0.5f)
+        if (Input.GetKey(KeyCode.Space) || InputManager.ActiveDevice.GetControl(InputControlType.Action3) && dashingTimer <0.5f) 
         {
             dashingTimer += Time.deltaTime;
             isDashing = true;
@@ -87,6 +90,7 @@ public class Playercontroller : MonoBehaviour
         {
             player.transform.localScale += growLarger;
             walkSpeed -= decreaseSpeed;
+            dash -= decreaseSpeed *2;
             timesGrown++;
         }
         // after 10 food has been collected, dont grow in size 
