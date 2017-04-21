@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldDestroy : MonoBehaviour {
+public class ShieldDestroy : MonoBehaviour
+{
 
 	// Use this for initialization
-	void Start () {
-		
-	}
+	void Start ()
+    {
+
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
@@ -18,9 +21,12 @@ public class ShieldDestroy : MonoBehaviour {
     {
         if (other.tag == "Hazard")
         {
+           Debug.Log("collided");
             gameObject.SetActive(false);
             Destroy(other.gameObject);
+
         }
+
     }
 
 }
