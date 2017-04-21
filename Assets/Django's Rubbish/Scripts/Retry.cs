@@ -17,4 +17,10 @@ public class Retry : MonoBehaviour {
         SceneManager.LoadScene(startLevel);
     }
 
+    public void Quit()
+
+    {
+        Application.Quit();
+    }
+
 }

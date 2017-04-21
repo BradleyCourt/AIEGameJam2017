@@ -7,6 +7,8 @@ public class EnemyMoveHorizontal : MonoBehaviour {
     public float movementSpeed = 1.0f;
     public bool switchDirection;
 
+    public float rotateSpeed = 10f;
+
     // Use this for initialization
     void Awake()
     {
@@ -24,12 +26,16 @@ public class EnemyMoveHorizontal : MonoBehaviour {
 
         if (switchDirection == true)
         {
+            // Enemy Moves Left.
             transform.Translate(Vector3.left * movementSpeed * Time.deltaTime);
+
         }
 
         if (switchDirection == false)
         {
+            // Enemy Moves Right.
             transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
+
         }
 
     }
