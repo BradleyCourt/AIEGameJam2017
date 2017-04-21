@@ -51,7 +51,7 @@ public class Playercontroller : MonoBehaviour
         bool wasDashing = isDashing;
         isDashing = false;
         //Check for if the player is running
-        if (Input.GetKey(KeyCode.Space) || InputManager.ActiveDevice.GetControl(InputControlType.Action3) && dashingTimer <0.5f) 
+        if ((Input.GetKey(KeyCode.Space) || InputManager.ActiveDevice.GetControl(InputControlType.Action3)) && dashingTimer <0.5f) 
         {
             dashingTimer += Time.deltaTime;
             isDashing = true;
