@@ -59,6 +59,9 @@ public class GameControllerScript : MonoBehaviour {
     void finalParticle()
     {
         deathParticles.SetActive(true);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        deathParticles.transform.position = player.transform.position;
+        player.SetActive(false);
         //gameOverText.text = "Game Over!";
         gameOver = true;
     }
