@@ -118,6 +118,7 @@ public class ItemAndWallSpawner : MonoBehaviour {
         if (other.tag == "Food")    
         {
             //Add 1 to score and relocate "Food" item randomly & Spawn a new "Hazard".
+            GetComponent<AudioSource>().Play();
             food.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(3.5f, -3.5f), 0);
             score = score + 100;
             playerController.Grow();
