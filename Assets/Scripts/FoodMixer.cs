@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodMixer : MonoBehaviour {
+public class FoodMixer : MonoBehaviour
+{
 
     public GameObject donut;
     public GameObject fries;
@@ -18,15 +19,16 @@ public class FoodMixer : MonoBehaviour {
     public int foodMixer;
 
     // Use this for initialization
-    void Start () {
-
-        foodMixer = GetRandomNumber(10);
+    void Start ()
+    { 
+        foodMixer = 9;
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
-        if (foodMixer == 1)
+        if (foodMixer == 0)
         {
             donut.SetActive(true);
             fries.SetActive(false);
@@ -40,7 +42,7 @@ public class FoodMixer : MonoBehaviour {
             burger.SetActive(false);
         }
 
-        if (foodMixer == 2)
+        if (foodMixer == 1)
         {
             donut.SetActive(false);
             fries.SetActive(true);
@@ -54,7 +56,7 @@ public class FoodMixer : MonoBehaviour {
             burger.SetActive(false);
         }
 
-        if (foodMixer == 3)
+        if (foodMixer == 2)
         {
             donut.SetActive(false);
             fries.SetActive(false);
@@ -68,7 +70,7 @@ public class FoodMixer : MonoBehaviour {
             burger.SetActive(false);
         }
 
-        if (foodMixer == 4)
+        if (foodMixer == 3)
         {
             donut.SetActive(false);
             fries.SetActive(false);
@@ -82,7 +84,7 @@ public class FoodMixer : MonoBehaviour {
             burger.SetActive(false);
         }
 
-        if (foodMixer == 5)
+        if (foodMixer == 4)
         {
             donut.SetActive(false);
             fries.SetActive(false);
@@ -96,7 +98,7 @@ public class FoodMixer : MonoBehaviour {
             burger.SetActive(false);
         }
 
-        if (foodMixer == 6)
+        if (foodMixer == 5)
         {
             donut.SetActive(false);
             fries.SetActive(false);
@@ -110,7 +112,7 @@ public class FoodMixer : MonoBehaviour {
             burger.SetActive(false);
         }
 
-        if (foodMixer == 7)
+        if (foodMixer == 6)
         {
             donut.SetActive(false);
             fries.SetActive(false);
@@ -124,7 +126,7 @@ public class FoodMixer : MonoBehaviour {
             burger.SetActive(false);
         }
 
-        if (foodMixer == 8)
+        if (foodMixer == 7)
         {
             donut.SetActive(false);
             fries.SetActive(false);
@@ -138,7 +140,7 @@ public class FoodMixer : MonoBehaviour {
             burger.SetActive(false);
         }
 
-        if (foodMixer == 9)
+        if (foodMixer == 8)
         {
             donut.SetActive(false);
             fries.SetActive(false);
@@ -152,7 +154,7 @@ public class FoodMixer : MonoBehaviour {
             burger.SetActive(false);
         }
 
-        if (foodMixer == 10)
+        if (foodMixer == 9)
         {
             donut.SetActive(false);
             fries.SetActive(false);
@@ -173,6 +175,18 @@ public class FoodMixer : MonoBehaviour {
         if (other.tag == "Player")
         {
             foodMixer = GetRandomNumber(10);
+            if (foodMixer == 0)
+            {
+                Debug.Log("donut spawns");
+            }
+            else if (foodMixer == 9)
+            {
+              Debug.Log("burger spawns");
+            }
+            else
+            {
+                Debug.Log("something else spawned");
+            }
         }
     }
 
