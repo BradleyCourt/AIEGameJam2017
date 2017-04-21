@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rotationShield : MonoBehaviour {
+public class rotationObject : MonoBehaviour {
     public float shieldSpeed;
 
 	// Use this for initialization
