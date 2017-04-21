@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using InControl;
 
-public class Playercontroller : MonoBehaviour
+public class testPlayerController : MonoBehaviour
 {
     public GameObject player;
     InputDevice device;
@@ -12,7 +12,7 @@ public class Playercontroller : MonoBehaviour
     private Vector3 move;
     public float walkSpeed = 2.5f; // base walkspeed
     public float dash = 25.0f; // base dash speed
-  
+
     //Grow Related Code 
     public Vector3 growLarger;
     public int timesGrown;
@@ -34,24 +34,24 @@ public class Playercontroller : MonoBehaviour
     private bool gameOver;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         cc = GetComponent<CharacterController>();
         timesGrown = 0;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         device = InputManager.ActiveDevice;
-            
+
         var currentV = cc.velocity;
         currentV.z = 0;
 
         bool wasDashing = isDashing;
         isDashing = false;
         //Check for if the player is running
-        if ((Input.GetKey(KeyCode.Space) || InputManager.ActiveDevice.GetControl(InputControlType.Action3)) && dashingTimer <0.5f) 
+        if (Input.GetKey(KeyCode.Space) || InputManager.ActiveDevice.GetControl(InputControlType.Action3) && dashingTimer < 0.5f)
         {
             dashingTimer += Time.deltaTime;
             isDashing = true;
@@ -86,15 +86,15 @@ public class Playercontroller : MonoBehaviour
     public void Grow()
     {
         // if you collect food, increase scaling of player
-        if(timesGrown < maxGrows)
+        if (timesGrown < maxGrows)
         {
             player.transform.localScale += growLarger;
             walkSpeed -= decreaseSpeed;
-            dash -= decreaseSpeed *2;
+            dash -= decreaseSpeed * 2;
             timesGrown++;
         }
         // after 10 food has been collected, dont grow in size 
-        
+
     }
     public void Death()
     {
