@@ -18,8 +18,7 @@ public class KillPlayer : MonoBehaviour
 
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        //playerController = player.GetComponent<Playercontroller>();
+
 
         GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
 
