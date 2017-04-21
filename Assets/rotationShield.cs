@@ -7,12 +7,12 @@ public class rotationShield : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        GetComponent<ParticleSystem>().Play();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(Vector3.up, shieldSpeed * Time.deltaTime);
+        transform.Rotate( 0.0f, 0.0f, shieldSpeed * Time.deltaTime);
 
     }
 }
