@@ -24,7 +24,7 @@ public class Playercontroller : MonoBehaviour
 
     //Dashing Related
     float dashingTimer = 0;
-    float recharge = 0;
+    public float recharge = 0;
     public bool isDashing = false;
 
     //Character Controller
