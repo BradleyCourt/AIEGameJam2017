@@ -8,15 +8,18 @@ public class KillPlayer : MonoBehaviour
 
     public GameObject deathParticles;
     public GameObject deathCanvas;
+    public GameObject Player;
 
     //public int scoreValue;
 
-    public int objectStrength;
+   // public int objectStrength;
 
     private GameControllerScript gameController;
 
     void Start()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        //playerController = player.GetComponent<Playercontroller>();
 
         GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
 
@@ -28,10 +31,6 @@ public class KillPlayer : MonoBehaviour
         {
             Debug.Log("Cannot find 'GameController' script");
         }
-
-
-
-
     }
 
 
@@ -40,18 +39,9 @@ public class KillPlayer : MonoBehaviour
 
         if (other.tag == "Player")
         {
-
             Debug.Log("Enemy has collided with Player");
-
-
-
-          gameController.GameOver();
-            Debug.Log("Death canvas triggered");
-
-           
+            gameController.GameOver();
+            Debug.Log("Death canvas triggered");   
         }
-
-
-
     }
 }
